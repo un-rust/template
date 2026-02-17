@@ -58,8 +58,8 @@ Extend via `BlockHandler` trait. See [API Reference](https://betterhyq.github.io
 
 ## License
 
-<!-- automdrs:contributors author="UnRUST" license="MIT" -->
-Published under the [MIT](./LICENSE) license.
+<!-- automdrs:contributors author="UnRUST" license="Apache-2.0" -->
+Published under the [Apache-2.0](./LICENSE) license.
 Made by [@UnRUST](https://github.com/un-rust) 💛
 <br><br>
 <a href="https://github.com/un-rust/template/graphs/contributors">
