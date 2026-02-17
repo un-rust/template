@@ -1,6 +1,10 @@
 [package]
 name = "template"
 version = "1.0.0"
+authors = ["YONGQI <betterhyq@qq.com>"]
 edition = "2024"
+description = "A template for a new Rust project"
+readme = "README.md"
+license = "Apache-2.0"
 
 [dependencies]
