@@ -1,5 +1,8 @@
 {
   "scripts": {
+    "build": "cargo build",
+    "format": "cargo fmt",
+    "lint": "cargo clippy",
     "prepare": "husky",
     "test": "cargo test"
   },
