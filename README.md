@@ -8,7 +8,11 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/un-rust/template)
 <!-- /automdrs -->
 
+<!-- automdrs:description -->
+
 A template for a new Rust project
+
+<!-- /automdrs -->
 
 **[Full documentation →](https://docs.rs/template/)**
 
