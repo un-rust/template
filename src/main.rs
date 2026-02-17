@@ -1,3 +1,5 @@
+use package_name::hello;
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", hello("world"));
 }
