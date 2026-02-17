@@ -1,17 +1,10 @@
 {
-  "name": "template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "cargo test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "cargo test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.28.0",
   "dependencies": {
     "husky": "^9.1.7"
-  }
+  },
+  "packageManager": "pnpm@10.28.0"
 }
