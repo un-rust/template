@@ -1,4 +1,4 @@
-use package_name::hello;
+use template::hello;
 
 fn main() {
     println!("{}", hello("world"));
