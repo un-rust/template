@@ -1,4 +1,4 @@
-use urlogger::{log, LogLevel};
+use urlogger::{LogLevel, log};
 
 pub fn hello(name: &str) -> String {
     log!(LogLevel::Info, "lib.rs");
