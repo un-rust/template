@@ -7,10 +7,12 @@ pre-commit:
   commands:
     clippy:
       run: pnpm lint {staged_files}
+      glob: "*.rs"
       files: git diff --name-only --cached
-    
+
     fmt:
       run: pnpm format {staged_files}
+      glob: "*.rs"
       files: git diff --name-only --cached
       stage_fixed: true
 
