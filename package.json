@@ -5,7 +5,7 @@
     "format": "cargo fmt",
     "format:ts": "prettier --write .",
     "lint": "cargo clippy",
-    "prepare": "husky",
+    "prepare": "lefthook install",
     "test": "cargo test",
     "test:coverage": "cargo tarpaulin --fail-under 95 --exclude-files 'src/main.rs'",
     "commit": "cz",
@@ -28,6 +28,7 @@
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.7",
+    "lefthook": "2.1.1",
     "prettier": "3.8.1",
     "typescript": "5.9.3"
   },

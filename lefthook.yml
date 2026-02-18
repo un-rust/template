@@ -1,0 +1,25 @@
+output:
+  - execution
+  - failure
+
+pre-commit:
+  parallel: true
+  commands:
+    clippy:
+      run: pnpm lint {staged_files}
+      files: git diff --name-only --cached
+    
+    fmt:
+      run: pnpm format {staged_files}
+      files: git diff --name-only --cached
+      stage_fixed: true
+
+    format_ts:
+      run: pnpm format:ts {staged_files}
+      files: git diff --name-only --cached
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx --no -- commitlint --edit $1
