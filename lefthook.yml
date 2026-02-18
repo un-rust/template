@@ -8,12 +8,12 @@ pre-commit:
     clippy:
       run: pnpm lint {staged_files}
       glob: "*.rs"
-      files: git diff --name-only --cached
+      files: git diff --name-only --cached -- "*.rs"
 
     fmt:
       run: pnpm format {staged_files}
       glob: "*.rs"
-      files: git diff --name-only --cached
+      files: git diff --name-only --cached -- "*.rs"
       stage_fixed: true
 
     format_ts:
