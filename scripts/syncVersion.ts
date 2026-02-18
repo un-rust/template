@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse, stringify } from "@iarna/toml";
 import packageJson from "../package.json" with { type: "json" };
+import { simpleGit } from "simple-git";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const cargoTomlPath = join(__dirname, "..", "Cargo.toml");
@@ -20,3 +21,8 @@ if (!cargoToml.package) {
 
 writeFileSync(cargoTomlPath, stringify(cargoToml), "utf-8");
 console.log("Cargo.toml version updated to", newVersion);
+
+const git = simpleGit();
+await git.add(cargoTomlPath);
+await git.commit(`chore: sync version to ${newVersion}`);
+await git.push();

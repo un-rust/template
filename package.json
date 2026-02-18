@@ -8,7 +8,8 @@
     "format:ts": "prettier --write .",
     "lint": "cargo clippy",
     "prepare": "lefthook install",
-    "release": "changelogen --clean --release --push --patch",
+    "sync-version": "node ./scripts/syncVersion.ts",
+    "release": "changelogen --clean --release --push --patch && pnpm sync-version",
     "release:major": "changelogen --clean --release --push --major",
     "release:minor": "changelogen --clean --release --push --minor",
     "release:patch": "changelogen --clean --release --push --patch",
@@ -32,6 +33,7 @@
     "husky": "9.1.7",
     "lefthook": "2.1.1",
     "prettier": "3.8.1",
+    "simple-git": "3.31.1",
     "typescript": "5.9.3"
   },
   "packageManager": "pnpm@10.28.0"
