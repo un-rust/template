@@ -1,7 +1,7 @@
 [package]
 name = "template"
-version = "1.0.0"
-authors = ["YONGQI <betterhyq@qq.com>"]
+version = "0.0.1"
+authors = [ "YONGQI <betterhyq@qq.com>" ]
 edition = "2024"
 description = "A template for a new Rust project"
 documentation = "https://docs.rs/template"
@@ -9,8 +9,8 @@ readme = "README.md"
 homepage = "https://un-rust.github.io/template"
 repository = "https://github.com/un-rust/template"
 license = "Apache-2.0"
-keywords = []
-categories = []
+keywords = [ ]
+categories = [ ]
 
 [[bin]]
 name = "packageName"

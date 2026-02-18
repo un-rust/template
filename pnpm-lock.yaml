@@ -16,6 +16,9 @@ importers:
       "@commitlint/types":
         specifier: 20.4.0
         version: 20.4.0
+      "@iarna/toml":
+        specifier: 2.2.5
+        version: 2.2.5
       "@types/node":
         specifier: 25.2.3
         version: 25.2.3
@@ -175,6 +178,12 @@ packages:
         integrity: sha512-aO5l99BQJ0X34ft8b0h7QFkQlqxC6e7ZPVmBKz13xM9O8obDaM1Cld4sQlJDXXU/VFuUzQ30mVtHjVz74TuStw==,
       }
     engines: { node: ">=v18" }
+
+  "@iarna/toml@2.2.5":
+    resolution:
+      {
+        integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==,
+      }
 
   "@types/node@25.2.3":
     resolution:
@@ -1757,6 +1766,8 @@ snapshots:
     dependencies:
       conventional-commits-parser: 6.2.1
       picocolors: 1.1.1
+
+  "@iarna/toml@2.2.5": {}
 
   "@types/node@25.2.3":
     dependencies:
