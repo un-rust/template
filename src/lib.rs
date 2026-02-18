@@ -1,6 +1,6 @@
-use log::trace;
+use urlogger::{log, LogLevel};
 
 pub fn hello(name: &str) -> String {
-    trace!("lib.rs");
+    log!(LogLevel::Info, "lib.rs");
     format!("Hello, {}!", name)
 }

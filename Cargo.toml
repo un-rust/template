@@ -17,5 +17,4 @@ name = "packageName"
 path = "src/main.rs"
 
 [dependencies]
-log = "0.4.29"
-env_logger = "0.11"
+urlogger = "1.0.0"
