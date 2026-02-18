@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.0.2
+
+[compare changes](https://github.com/un-rust/template/compare/v0.0.1...v0.0.2)
+
+### 🚀 Enhancements
+
+- Set the lefthook ([bced569](https://github.com/un-rust/template/commit/bced569))
+
+### 🩹 Fixes
+
+- Refine lefthook configuration to ensure file filtering for linting and formatting steps ([9ec1948](https://github.com/un-rust/template/commit/9ec1948))
+
+### 🏡 Chore
+
+- Clean up CHANGELOG.md by removing unnecessary whitespace ([2cecf0d](https://github.com/un-rust/template/commit/2cecf0d))
+- Update package.json to reorganize scripts and ensure consistent test and release commands ([8c99bed](https://github.com/un-rust/template/commit/8c99bed))
+- Update version to 0.0.1 in Cargo.toml ([4a2226a](https://github.com/un-rust/template/commit/4a2226a))
+- Enhance release process by adding sync-version script ([346a885](https://github.com/un-rust/template/commit/346a885))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v0.0.1
 
 ### 🚀 Enhancements
