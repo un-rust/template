@@ -10,7 +10,7 @@ homepage = "https://github.com/un-rust/template"
 repository = "https://github.com/un-rust/template"
 license = "Apache-2.0"
 keywords = [ ]
-categories = [ ]
+categories = [ "development-tools" ]
 
 [[bin]]
 name = "packageName"
