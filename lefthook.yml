@@ -6,19 +6,19 @@ pre-commit:
   parallel: true
   commands:
     clippy:
-      run: pnpm lint {staged_files}
+      run: pnpm lint
       glob: "*.rs"
-      files: git diff --name-only --cached -- "*.rs"
+      文件: git diff --name-only --cached -- "*.rs"
 
     fmt:
-      run: pnpm format {staged_files}
+      run: pnpm format
       glob: "*.rs"
-      files: git diff --name-only --cached -- "*.rs"
+      文件: git diff --name-only --cached -- "*.rs"
       stage_fixed: true
 
     format_ts:
       run: pnpm format:ts {staged_files}
-      files: git diff --name-only --cached
+      文件: git diff --name-only --cached
       stage_fixed: true
 
 commit-msg:
