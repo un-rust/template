@@ -30,6 +30,18 @@ cargo add template
 
 ## Usage
 
+<!-- automdrs:file src="./src/main.rs" -->
+
+```rust
+use template::hello;
+
+fn main() {
+    println!("{}", hello("world"));
+}
+```
+
+<!-- /automdrs -->
+
 ## API overview
 
 ## License
