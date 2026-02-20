@@ -11,6 +11,7 @@ repository = "https://github.com/un-rust/template"
 license = "Apache-2.0"
 keywords = [ ]
 categories = [ "development-tools" ]
+rust-version = "1.85.0"
 
 [dependencies]
 urlogger = "1.0.0"
