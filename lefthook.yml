@@ -23,4 +23,4 @@ pre-commit:
 commit-msg:
   commands:
     commitlint:
-      run: npx --no -- commitlint --edit $1
+      run: bunx commitlint --edit $1

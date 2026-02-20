@@ -22,7 +22,7 @@ bun install
 | `bun run format` | Format Rust code (`cargo fmt`) |
 | `bun run lint` | Lint with Clippy (`cargo clippy`) |
 | `bun run test` | Run tests (`cargo test`) |
-| `bun run test:coverage` | Coverage with tarpaulin (optional) |
+| `bun run test:coverage` | Coverage with [cargo-tarpaulin](https://github.com/cargo-tarpaulin/cargo-tarpaulin) (optional; run `cargo install cargo-tarpaulin` first) |
 | `bun run check` | Lint/format JS/TS (Biome) |
 | `bun run commit` | Commit with Commitizen (conventional commits) |
 
