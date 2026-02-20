@@ -1,30 +1,52 @@
-# Contribution Guide
+# Contributing
 
-Thanks for your interest in contributing. This document explains how to set up the project and submit changes.
+Thanks for your interest in contributing to this project.
 
-## Prerequisites
+## Development setup
 
-- **Rust** (stable). Install via [rustup](https://rustup.rs/).
-- **Node.js** (v24 or as specified in [.nvmrc](.nvmrc)) and **pnpm** (v10).
+- **Rust:** 1.85+ (see [rust-toolchain.toml](./rust-toolchain.toml))
+- **Node:** 24+ with [Bun](https://bun.sh) (see [package.json](./package.json))
 
-## Getting started
+```sh
+# Install Rust (rustup will use rust-toolchain.toml)
+rustup show
 
-1. **Fork and clone** the repository.
+# Install JS tooling and hooks
+bun install
+```
 
-2. **Install Node dependencies**:
+## Commands
 
-   ```sh
-   pnpm install
-   ```
+| Command | Description |
+|--------|-------------|
+| `bun run format` | Format Rust code (`cargo fmt`) |
+| `bun run lint` | Lint with Clippy (`cargo clippy`) |
+| `bun run test` | Run tests (`cargo test`) |
+| `bun run test:coverage` | Coverage with tarpaulin (optional) |
+| `bun run check` | Lint/format JS/TS (Biome) |
+| `bun run commit` | Commit with Commitizen (conventional commits) |
 
-3. **Build and test**:
+## Commit messages
 
-   ```sh
-   pnpm build
-   pnpm test
-   ```
+We use [Conventional Commits](https://www.conventionalcommits.org/) and [commitlint](https://commitlint.js.org/). Use:
 
-## Questions or issues?
+```sh
+bun run commit
+```
 
-- Open a [bug report](.github/ISSUE_TEMPLATE/bug_report.md) or [feature request](.github/ISSUE_TEMPLATE/feature_request.md) via GitHub Issues.
-- Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before participating.
+Examples: `feat: add foo`, `fix: bar`, `chore(deps): bump x`.
+
+## Pull requests
+
+1. Branch from `main`, make changes, run `bun run format`, `bun run lint`, `bun run test`.
+2. Push and open a PR. CI will run format check, Clippy, and tests on Ubuntu, Windows, and macOS.
+3. Keep the scope small and the title/commits clear.
+
+## Releasing
+
+Maintainers use:
+
+- `bun run bump:patch` / `bump:minor` / `bump:major` to bump version in `Cargo.toml`, commit, tag, and push.
+- `bun run release` to generate changelog and sync a GitHub release.
+
+Publishing to crates.io is done manually when ready.
