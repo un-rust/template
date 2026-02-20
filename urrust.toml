@@ -9,3 +9,10 @@ tsconfig_json = "tsconfig.json"
 
 # Dynamic configuration
 [dynamic]
+
+[scripts]
+format = "cargo fmt"
+lint = "cargo clippy"
+build = "cargo build"
+test = "cargo test"
+test_coverage = "cargo tarpaulin --fail-under 95 --exclude-files 'src/main.rs'"
