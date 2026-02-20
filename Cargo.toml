@@ -1,6 +1,6 @@
 [package]
 name = "package-name"
-version = "3.0.1"
+version = "3.0.2"
 authors = [ "YONGQI <betterhyq@qq.com>" ]
 edition = "2024"
 description = "A template for a new Rust project"
