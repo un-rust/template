@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
 import {
 	generateMarkDown,
@@ -11,6 +12,37 @@ import open from "open";
 import { logger } from "rslog";
 import { getVersionFromCargo, rootDir } from "./shared.js";
 
+/** Parse "v1.2.3" or "1.2.3" to [1,2,3] for comparison. */
+function parseSemver(s: string): number[] {
+	const v = s.replace(/^v/, "").match(/^\d+\.\d+\.\d+/);
+	return v ? v[0].split(".").map(Number) : [];
+}
+
+/** Compare two semver arrays; returns positive if a > b. */
+function compareSemver(a: number[], b: number[]): number {
+	for (let i = 0; i < 3; i++) {
+		const d = (a[i] ?? 0) - (b[i] ?? 0);
+		if (d !== 0) return d;
+	}
+	return 0;
+}
+
+/** Get the latest git tag that is strictly older than currentVersion (e.g. v2.0.0 for current 2.0.1). */
+function getPreviousTag(
+	cwd: string,
+	currentVersion: string,
+): string | undefined {
+	const tags = execSync("git tag -l 'v*'", { cwd, encoding: "utf-8" })
+		.trim()
+		.split(/\s+/)
+		.filter(Boolean);
+	const current = parseSemver(currentVersion);
+	const older = tags
+		.filter((t) => compareSemver(parseSemver(t), current) < 0)
+		.sort((a, b) => -compareSemver(parseSemver(a), parseSemver(b)));
+	return older[0];
+}
+
 async function main() {
 	process.chdir(rootDir);
 	logger.greet("Welcome to the UnRust Release Script!");
@@ -18,9 +50,12 @@ async function main() {
 	const version = await getVersionFromCargo();
 	logger.info("Current version: %s", version);
 
+	const previousTag = getPreviousTag(rootDir, version);
 	const config = await loadChangelogConfig(rootDir, {
 		newVersion: version,
 		output: "CHANGELOG.md",
+		from: previousTag ?? "",
+		to: "HEAD",
 	});
 
 	logger.info("Generating changelog for %s...%s", config.from || "", config.to);
