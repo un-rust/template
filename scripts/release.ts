@@ -122,7 +122,11 @@ async function main() {
 	const result = await syncGithubRelease(config, release);
 
 	if (result.status === "manual") {
-		const url = result.url!;
+		const url = result.url;
+		if (!url) {
+			logger.error("No release URL found");
+			process.exit(1);
+		}
 		logger.info("Opening GitHub release page with pre-filled data...");
 		await open(url).catch(() => {
 			logger.info("Open this link to create the release manually:\n%o", url);
