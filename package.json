@@ -9,6 +9,7 @@
     "format": "cargo fmt",
     "format:ts": "prettier --write .",
     "lint": "cargo clippy",
+    "lint:ts": "eslint --fix .",
     "prepare": "lefthook install",
     "release": "bun run scripts/release.ts",
     "test": "cargo test",
@@ -19,26 +20,28 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "dependencies": {
+  "devDependencies": {
     "@commitlint/cli": "20.4.1",
     "@commitlint/config-conventional": "20.4.1",
     "@commitlint/types": "20.4.0",
+    "@eslint/js": "10.0.1",
     "@iarna/toml": "2.2.5",
     "@types/inquirer": "9.0.9",
     "@types/node": "25.2.3",
     "changelogen": "0.6.2",
     "commitizen": "4.3.1",
+    "consola": "3.4.2",
     "cz-conventional-changelog": "3.3.0",
+    "eslint": "10.0.0",
+    "globals": "17.3.0",
     "husky": "9.1.7",
     "inquirer": "13.2.5",
     "lefthook": "2.1.1",
     "prettier": "3.8.1",
+    "rslog": "2.0.0",
     "simple-git": "3.31.1",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.56.0"
   },
-  "packageManager": "pnpm@10.28.0",
-  "devDependencies": {
-    "consola": "3.4.2",
-    "rslog": "2.0.0"
-  }
+  "packageManager": "pnpm@10.28.0"
 }
