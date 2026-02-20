@@ -1,3 +1,20 @@
+## v3.0.0
+
+[compare changes](https://github.com/un-rust/template/compare/v2.1.0...v3.0.0)
+
+### 🩹 Fixes
+
+- Handle missing release URL in GitHub release script ([f493bc4](https://github.com/un-rust/template/commit/f493bc4))
+
+### 🏡 Chore
+
+- Update changelog for version 2.1.0 ([47c4579](https://github.com/un-rust/template/commit/47c4579))
+- Bump version to 3.0.0 ([bb933bd](https://github.com/un-rust/template/commit/bb933bd))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v2.1.0
 
 [compare changes](https://github.com/un-rust/template/compare/v2.0.2...v2.1.0)
