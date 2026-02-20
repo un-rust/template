@@ -1,8 +1,10 @@
+import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 import inquirer from "inquirer";
 import { logger } from "rslog";
 import { simpleGit } from "simple-git";
-import { cargoTomlPath, getVersionFromCargo } from "./shared.js";
+import { cargoTomlPath, getVersionFromCargo, rootDir } from "./shared.js";
 
 type BumpType = "major" | "minor" | "patch";
 
@@ -76,8 +78,15 @@ async function main() {
 	const newContent = content.replace(versionRe, `$1$2${newVersion}$2`);
 	await writeFile(cargoTomlPath, newContent);
 
+	// update .template-version
+	const templateVersionPath = join(rootDir, ".template-version");
+	if (existsSync(templateVersionPath)) {
+		await writeFile(templateVersionPath, newVersion);
+	}
+
 	const git = simpleGit();
 	await git.add(cargoTomlPath);
+	await git.add(templateVersionPath);
 	await git.commit(`chore: bump version to ${newVersion}`);
 	await git.push();
 	await git.addTag(`v${newVersion}`);
