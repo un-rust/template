@@ -21,21 +21,29 @@ async function main() {
 	for (const file of ["Cargo.toml", "README.md", "package.json"]) {
 		const path = join(rootDir, file);
 		if (!existsSync(path)) continue;
-		const content = await readFile(path, "utf-8");
-		await writeFile(path, content.replaceAll("package-name", name));
+		let content = await readFile(path, "utf-8");
+		content = content.replaceAll("package-name", name);
+		await writeFile(path, content);
 	}
 
-	const testPath = join(rootDir, "tests", "integration_test.rs");
-	if (existsSync(testPath)) {
-		const content = await readFile(testPath, "utf-8");
-		await writeFile(testPath, content.replaceAll("package_name", crateName));
+	for (const rel of ["src/main.rs", "tests/integration_test.rs"]) {
+		const path = join(rootDir, rel);
+		if (!existsSync(path)) continue;
+		const content = await readFile(path, "utf-8");
+		await writeFile(path, content.replaceAll("package_name", crateName));
+	}
+
+	const securityPath = join(rootDir, ".github", "SECURITY.md");
+	if (existsSync(securityPath)) {
+		const content = await readFile(securityPath, "utf-8");
+		await writeFile(securityPath, content.replaceAll("package_name", name));
 	}
 
 	// clean the changelog
 	await writeFile(join(rootDir, "CHANGELOG.md"), "");
 
 	logger.success(
-		`Replaced "package-name" with "${name}" in Cargo.toml, README.md, package.json; crate name in tests set to "${crateName}".`,
+		`Replaced "package-name" with "${name}", crate name "${crateName}" in src and tests; cleared CHANGELOG.md.`,
 	);
 }
 
