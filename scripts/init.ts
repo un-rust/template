@@ -42,8 +42,16 @@ async function main() {
 	// clean the changelog
 	await writeFile(join(rootDir, "CHANGELOG.md"), "");
 
+	// reset version in Cargo.toml
+	const cargoPath = join(rootDir, "Cargo.toml");
+	if (existsSync(cargoPath)) {
+		let cargo = await readFile(cargoPath, "utf-8");
+		cargo = cargo.replace(/^version\s*=\s*"[^"]*"/m, 'version = "1.0.0"');
+		await writeFile(cargoPath, cargo);
+	}
+
 	logger.success(
-		`Replaced "package-name" with "${name}", crate name "${crateName}" in src and tests; cleared CHANGELOG.md.`,
+		`Replaced "package-name" with "${name}", crate name "${crateName}" in src and tests; cleared CHANGELOG.md; reset Cargo.toml version to 1.0.0.`,
 	);
 }
 
