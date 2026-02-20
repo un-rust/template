@@ -1,3 +1,7 @@
+## v2.0.1
+
+[compare changes](https://github.com/un-rust/template/compare/v2.0.1...v2.0.1)
+
 ## v2.0.0
 
 [compare changes](https://github.com/un-rust/template/compare/v2.0.0...v2.0.0)
