@@ -1,4 +1,4 @@
-# template
+# package-name
 
 <!-- automdrs:badges showCrateVersion="true" showCrateDownloads="true" showCrateDocs="true" showCommitActivity="true" showRepoStars="true" -->
 
@@ -16,7 +16,7 @@ A template for a new Rust project
 
 <!-- /automdrs -->
 
-**[Full documentation →](https://docs.rs/template/)**
+**[Full documentation →](https://docs.rs/package-name/)**
 
 ## Quick start
 

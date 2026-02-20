@@ -30,6 +30,7 @@ async function getVersionFromCargo(): Promise<string> {
 
 async function main() {
 	process.chdir(rootDir);
+	logger.greet("Welcome to the UnRust Release Script!");
 
 	const version = await getVersionFromCargo();
 	logger.info("Current version: %s", version);

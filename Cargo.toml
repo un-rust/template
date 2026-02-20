@@ -1,13 +1,13 @@
 [package]
-name = "template"
+name = "package-name"
 version = "1.0.3"
 authors = [ "YONGQI <betterhyq@qq.com>" ]
 edition = "2024"
 description = "A template for a new Rust project"
-documentation = "https://docs.rs/template"
+documentation = "https://docs.rs/package-name"
 readme = "README.md"
-homepage = "https://github.com/un-rust/template"
-repository = "https://github.com/un-rust/template"
+homepage = "https://github.com/un-rust/package-name"
+repository = "https://github.com/un-rust/package-name"
 license = "Apache-2.0"
 keywords = [ ]
 categories = [ "development-tools" ]
