@@ -21,6 +21,9 @@ async function main() {
 		await writeFile(path, content.replaceAll("package-name", name));
 	}
 
+	// clean the changelog
+	await writeFile(join(rootDir, "CHANGELOG.md"), "");
+
 	logger.success(
 		`Replaced "package-name" with "${name}" in Cargo.toml and README.md`,
 	);
