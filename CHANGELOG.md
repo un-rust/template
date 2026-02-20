@@ -1,3 +1,19 @@
+## v3.0.1
+
+[compare changes](https://github.com/un-rust/template/compare/v3.0.0...v3.0.1)
+
+### 🏡 Chore
+
+- Update changelog for version 3.0.0 ([5897bb4](https://github.com/un-rust/template/commit/5897bb4))
+- Add .template-version file for version 3.0.0 ([42d0979](https://github.com/un-rust/template/commit/42d0979))
+- Reset version in Cargo.toml to 1.0.0 and update success message ([33704b5](https://github.com/un-rust/template/commit/33704b5))
+- Update versioning process to include .template-version file ([f79f687](https://github.com/un-rust/template/commit/f79f687))
+- Bump version to 3.0.1 ([be77900](https://github.com/un-rust/template/commit/be77900))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v3.0.0
 
 [compare changes](https://github.com/un-rust/template/compare/v2.1.0...v3.0.0)
