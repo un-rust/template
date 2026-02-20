@@ -10,6 +10,7 @@ import {
 } from "changelogen";
 import open from "open";
 import { logger } from "rslog";
+import { simpleGit } from "simple-git";
 import { getVersionFromCargo, rootDir } from "./shared.js";
 
 /** Parse "v1.2.3" or "1.2.3" to [1,2,3] for comparison. */
@@ -111,6 +112,12 @@ async function main() {
 		await fsp.writeFile(config.output, changelogMD);
 		logger.success("Updated %s", config.output);
 	}
+
+	const git = simpleGit();
+	await git.add("CHANGELOG.md");
+	await git.add("Cargo.lock");
+	await git.commit(`chore: update changelog for version ${version}`);
+	await git.push();
 
 	const result = await syncGithubRelease(config, release);
 
