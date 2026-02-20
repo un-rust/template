@@ -1,5 +1,5 @@
-// use template::hello;
+use package_name::hello;
 
 fn main() {
-    println!("Hello, un-rust!");
+    println!("{}", hello("un-rust"));
 }

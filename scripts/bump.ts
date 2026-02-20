@@ -71,10 +71,9 @@ async function main() {
 	}
 
 	const content = await readFile(cargoTomlPath, "utf-8");
-	const newContent = content.replace(
-		`version = "${version}"`,
-		`version = "${newVersion}"`,
-	);
+	// Match version = "x.y.z" or version = 'x.y.z' with optional spacing
+	const versionRe = /^(version\s*=\s*)(["'])(?:\d+\.\d+\.\d+)\2/m;
+	const newContent = content.replace(versionRe, `$1$2${newVersion}$2`);
 	await writeFile(cargoTomlPath, newContent);
 
 	const git = simpleGit();

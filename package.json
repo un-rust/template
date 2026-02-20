@@ -1,4 +1,5 @@
 {
+	"name": "package-name",
 	"type": "module",
 	"scripts": {
 		"build": "cargo build",
@@ -7,6 +8,7 @@
 		"bump:patch": "bun run scripts/bump.ts -- --patch",
 		"commit": "cz",
 		"format": "cargo fmt",
+		"init": "bun run scripts/init.ts",
 		"lint": "cargo clippy",
 		"check": "biome check . --write --unsafe",
 		"prepare": "lefthook install",
