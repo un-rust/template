@@ -4,6 +4,7 @@ bug_report_md = ".github/ISSUE_TEMPLATE/bug_report.md"
 feature_request_md = ".github/ISSUE_TEMPLATE/feature_request.md"
 test_yaml = ".github/workflows/test.yml"
 dependabot_yml = ".github/dependabot.yml"
+rustfmt_toml = "rustfmt.toml"
 tsconfig_json = "tsconfig.json"
 
 # Dynamic configuration
