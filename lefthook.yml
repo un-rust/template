@@ -8,17 +8,22 @@ pre-commit:
     clippy:
       run: pnpm lint
       glob: "*.rs"
-      文件: git diff --name-only --cached -- "*.rs"
+      files: git diff --name-only --cached -- "*.rs"
 
     fmt:
       run: pnpm format
       glob: "*.rs"
-      文件: git diff --name-only --cached -- "*.rs"
+      files: git diff --name-only --cached -- "*.rs"
+      stage_fixed: true
+
+    lint_ts:
+      run: pnpm lint:ts {staged_files}
+      files: git diff --name-only --cached -- "*.ts"
       stage_fixed: true
 
     format_ts:
       run: pnpm format:ts {staged_files}
-      文件: git diff --name-only --cached
+      files: git diff --name-only --cached
       stage_fixed: true
 
 commit-msg:
