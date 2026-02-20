@@ -1,3 +1,20 @@
+## v2.1.0
+
+[compare changes](https://github.com/un-rust/template/compare/v2.0.2...v2.1.0)
+
+### 🚀 Enhancements
+
+- Update the release info ([733457a](https://github.com/un-rust/template/commit/733457a))
+
+### 🏡 Chore
+
+- Update CHANGELOG for version 2.0.2 and document enhancements ([4bc8e1e](https://github.com/un-rust/template/commit/4bc8e1e))
+- Bump version to 2.1.0 ([168f7cb](https://github.com/un-rust/template/commit/168f7cb))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v2.0.2
 
 [compare changes](https://github.com/un-rust/template/compare/v2.0.1...v2.0.2)
