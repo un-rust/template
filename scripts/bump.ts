@@ -1,37 +1,37 @@
-import { logger } from "rslog";
-import { parse } from "@iarna/toml";
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parse } from "@iarna/toml";
 import inquirer from "inquirer";
+import { logger } from "rslog";
 import { simpleGit } from "simple-git";
 
 type BumpType = "major" | "minor" | "patch";
 
 function bumpVersion(version: string, type: BumpType): string {
-  const match = version.match(/^(\d+)\.(\d+)\.(\d+)/);
-  if (!match) throw new Error(`Invalid semver: ${version}`);
+	const match = version.match(/^(\d+)\.(\d+)\.(\d+)/);
+	if (!match) throw new Error(`Invalid semver: ${version}`);
 
-  const major = Number(match[1]);
-  const minor = Number(match[2]);
-  const patch = Number(match[3]);
+	const major = Number(match[1]);
+	const minor = Number(match[2]);
+	const patch = Number(match[3]);
 
-  switch (type) {
-    case "major":
-      return `${major + 1}.0.0`;
-    case "minor":
-      return `${major}.${minor + 1}.0`;
-    case "patch":
-      return `${major}.${minor}.${patch + 1}`;
-  }
+	switch (type) {
+		case "major":
+			return `${major + 1}.0.0`;
+		case "minor":
+			return `${major}.${minor + 1}.0`;
+		case "patch":
+			return `${major}.${minor}.${patch + 1}`;
+	}
 }
 
 function parseBumpArg(): BumpType | null {
-  const arg = process.argv.find((a) =>
-    ["--major", "--minor", "--patch"].includes(a),
-  );
-  if (!arg) return null;
-  return arg.slice(2) as BumpType;
+	const arg = process.argv.find((a) =>
+		["--major", "--minor", "--patch"].includes(a),
+	);
+	if (!arg) return null;
+	return arg.slice(2) as BumpType;
 }
 
 const __filename = fileURLToPath(import.meta.url);
@@ -42,14 +42,14 @@ const git = simpleGit();
 
 const cargoTomlContent = readFileSync(cargoTomlPath, "utf-8");
 const cargoToml = parse(cargoTomlContent) as {
-  package?: { version?: string };
+	package?: { version?: string };
 };
 
 const version = cargoToml.package?.version ?? "";
 
 if (!version) {
-  logger.error("Could not find version in Cargo.toml");
-  process.exit(1);
+	logger.error("Could not find version in Cargo.toml");
+	process.exit(1);
 }
 
 logger.greet("Welcome to the UnRust Bump Script!");
@@ -59,37 +59,37 @@ const bumpType = parseBumpArg();
 let newVersion: string;
 
 if (bumpType) {
-  newVersion = bumpVersion(version, bumpType);
-  logger.info("Bumping %s → %s", bumpType, newVersion);
+	newVersion = bumpVersion(version, bumpType);
+	logger.info("Bumping %s → %s", bumpType, newVersion);
 } else {
-  const { version: input } = await inquirer.prompt<{ version: string }>([
-    {
-      type: "input",
-      name: "version",
-      message: "Enter the new version",
-      default: version,
-    },
-  ]);
-  newVersion = input;
+	const { version: input } = await inquirer.prompt<{ version: string }>([
+		{
+			type: "input",
+			name: "version",
+			message: "Enter the new version",
+			default: version,
+		},
+	]);
+	newVersion = input;
 }
 
 const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
-  {
-    type: "confirm",
-    name: "confirm",
-    message: `Bump version to ${newVersion} and push?`,
-    default: true,
-  },
+	{
+		type: "confirm",
+		name: "confirm",
+		message: `Bump version to ${newVersion} and push?`,
+		default: true,
+	},
 ]);
 
 if (!confirm) {
-  logger.info("Version bump cancelled");
-  process.exit(0);
+	logger.info("Version bump cancelled");
+	process.exit(0);
 }
 
 const newCargoTomlContent = cargoTomlContent.replace(
-  `version = "${version}"`,
-  `version = "${newVersion}"`,
+	`version = "${version}"`,
+	`version = "${newVersion}"`,
 );
 writeFileSync(cargoTomlPath, newCargoTomlContent);
 
