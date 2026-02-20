@@ -1,7 +1,4 @@
 import { existsSync, promises as fsp } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-import { parse } from "@iarna/toml";
 import {
 	generateMarkDown,
 	getGitDiff,
@@ -12,21 +9,7 @@ import {
 } from "changelogen";
 import open from "open";
 import { logger } from "rslog";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const rootDir = join(__dirname, "..");
-const cargoTomlPath = join(rootDir, "Cargo.toml");
-
-async function getVersionFromCargo(): Promise<string> {
-	const content = await fsp.readFile(cargoTomlPath, "utf-8");
-	const cargo = parse(content) as { package?: { version?: string } };
-	const version = cargo.package?.version;
-	if (!version) {
-		throw new Error("Could not find version in Cargo.toml");
-	}
-	return version;
-}
+import { getVersionFromCargo, rootDir } from "./shared.js";
 
 async function main() {
 	process.chdir(rootDir);

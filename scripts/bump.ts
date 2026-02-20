@@ -1,10 +1,8 @@
-import { readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-import { parse } from "@iarna/toml";
+import { readFile, writeFile } from "node:fs/promises";
 import inquirer from "inquirer";
 import { logger } from "rslog";
 import { simpleGit } from "simple-git";
+import { cargoTomlPath, getVersionFromCargo } from "./shared.js";
 
 type BumpType = "major" | "minor" | "patch";
 
@@ -34,69 +32,62 @@ function parseBumpArg(): BumpType | null {
 	return arg.slice(2) as BumpType;
 }
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const cargoTomlPath = join(__dirname, "..", "Cargo.toml");
+async function main() {
+	const version = await getVersionFromCargo();
 
-const git = simpleGit();
+	logger.greet("Welcome to the UnRust Bump Script!");
+	logger.info("Current version: %s", version);
 
-const cargoTomlContent = readFileSync(cargoTomlPath, "utf-8");
-const cargoToml = parse(cargoTomlContent) as {
-	package?: { version?: string };
-};
+	const bumpType = parseBumpArg();
+	let newVersion: string;
 
-const version = cargoToml.package?.version ?? "";
+	if (bumpType) {
+		newVersion = bumpVersion(version, bumpType);
+		logger.info("Bumping %s → %s", bumpType, newVersion);
+	} else {
+		const { version: input } = await inquirer.prompt<{ version: string }>([
+			{
+				type: "input",
+				name: "version",
+				message: "Enter the new version",
+				default: version,
+			},
+		]);
+		newVersion = input;
+	}
 
-if (!version) {
-	logger.error("Could not find version in Cargo.toml");
-	process.exit(1);
-}
-
-logger.greet("Welcome to the UnRust Bump Script!");
-logger.info("Current version: %s", version);
-
-const bumpType = parseBumpArg();
-let newVersion: string;
-
-if (bumpType) {
-	newVersion = bumpVersion(version, bumpType);
-	logger.info("Bumping %s → %s", bumpType, newVersion);
-} else {
-	const { version: input } = await inquirer.prompt<{ version: string }>([
+	const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
 		{
-			type: "input",
-			name: "version",
-			message: "Enter the new version",
-			default: version,
+			type: "confirm",
+			name: "confirm",
+			message: `Bump version to ${newVersion} and push?`,
+			default: true,
 		},
 	]);
-	newVersion = input;
+
+	if (!confirm) {
+		logger.info("Version bump cancelled");
+		process.exit(0);
+	}
+
+	const content = await readFile(cargoTomlPath, "utf-8");
+	const newContent = content.replace(
+		`version = "${version}"`,
+		`version = "${newVersion}"`,
+	);
+	await writeFile(cargoTomlPath, newContent);
+
+	const git = simpleGit();
+	await git.add(cargoTomlPath);
+	await git.commit(`chore: bump version to ${newVersion}`);
+	await git.push();
+	await git.addTag(`v${newVersion}`);
+	await git.pushTags();
+
+	logger.success("Version bumped and pushed successfully");
 }
 
-const { confirm } = await inquirer.prompt<{ confirm: boolean }>([
-	{
-		type: "confirm",
-		name: "confirm",
-		message: `Bump version to ${newVersion} and push?`,
-		default: true,
-	},
-]);
-
-if (!confirm) {
-	logger.info("Version bump cancelled");
-	process.exit(0);
-}
-
-const newCargoTomlContent = cargoTomlContent.replace(
-	`version = "${version}"`,
-	`version = "${newVersion}"`,
-);
-writeFileSync(cargoTomlPath, newCargoTomlContent);
-
-await git.add(cargoTomlPath);
-await git.commit(`chore: bump version to ${newVersion}`);
-await git.push();
-await git.addTag(`v${newVersion}`);
-await git.pushTags();
-
-logger.success("Version bumped and pushed successfully");
+main().catch((err) => {
+	logger.error(err);
+	process.exit(1);
+});
