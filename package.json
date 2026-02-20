@@ -2,14 +2,22 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "build": "cargo build",
+    "bump:major": "pnpm run bump -- --major",
+    "bump:minor": "pnpm run bump -- --minor",
+    "bump:patch": "pnpm run bump -- --patch",
     "commit": "cz",
+    "format": "cargo fmt",
     "format:ts": "prettier --write .",
+    "lint": "cargo clippy",
     "prepare": "lefthook install",
-    "sync-version": "node ./scripts/syncVersion.ts",
     "release": "changelogen --clean --release --push --patch && pnpm sync-version",
     "release:major": "changelogen --clean --release --push --major",
     "release:minor": "changelogen --clean --release --push --minor",
-    "release:patch": "changelogen --clean --release --push --patch"
+    "release:patch": "changelogen --clean --release --push --patch",
+    "sync-version": "node ./scripts/syncVersion.ts",
+    "test": "cargo test",
+    "test:coverage": "cargo tarpaulin --fail-under 95 --exclude-files 'src/main.rs'"
   },
   "config": {
     "commitizen": {
