@@ -33,16 +33,14 @@ cargo add template
 <!-- automdrs:file src="./src/main.rs" -->
 
 ```rust
-use template::hello;
+// use template::hello;
 
 fn main() {
-    println!("{}", hello("world"));
+    println!("Hello, un-rust!");
 }
 ```
 
 <!-- /automdrs -->
-
-## API overview
 
 ## License
 
