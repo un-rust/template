@@ -1,4 +1,6 @@
-# Forbidden to change
+[template]
+version = "1.0.0"
+
 [stable]
 bug_report_md = ".github/ISSUE_TEMPLATE/bug_report.md"
 feature_request_md = ".github/ISSUE_TEMPLATE/feature_request.md"
