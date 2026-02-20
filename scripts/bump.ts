@@ -4,6 +4,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import inquirer from "inquirer";
+import { simpleGit } from "simple-git";
+
+const git = simpleGit();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -49,5 +52,11 @@ const newCargoTomlContent = cargoTomlContent.replace(
 );
 writeFileSync(cargoTomlPath, newCargoTomlContent);
 
-logger.success("Version bumped successfully");
+await git.add(cargoTomlPath);
+await git.commit(`chore: bump version to ${newVersion.version}`);
+await git.push();
+await git.addTag(`v${newVersion.version}`);
+await git.pushTags();
+
+logger.success("Version bumped and pushed successfully");
 process.exit(0);
