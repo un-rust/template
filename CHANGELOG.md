@@ -1,3 +1,17 @@
+## v3.1.2
+
+[compare changes](https://github.com/un-rust/template/compare/v3.1.1...v3.1.2)
+
+### 🏡 Chore
+
+- Update changelog for version 3.1.1 ([7de95c8](https://github.com/un-rust/template/commit/7de95c8))
+- Remove deprecated scripts for version bumping, initialization, release, and shared utilities ([1a120df](https://github.com/un-rust/template/commit/1a120df))
+- Bump version to 3.1.2 ([290c5d4](https://github.com/un-rust/template/commit/290c5d4))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v3.1.1
 
 [compare changes](https://github.com/un-rust/template/compare/v3.1.0...v3.1.1)
