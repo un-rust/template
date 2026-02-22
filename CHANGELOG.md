@@ -1,3 +1,18 @@
+## v3.1.4
+
+[compare changes](https://github.com/un-rust/template/compare/v3.1.3...v3.1.4)
+
+### 🏡 Chore
+
+- Update changelog for version 3.1.3 ([062b02a](https://github.com/un-rust/template/commit/062b02a))
+- Update Rust version to 1.93.1 in configuration files ([fdc1bef](https://github.com/un-rust/template/commit/fdc1bef))
+- Update dependencies in package.json and bun.lock, including inquirer and simple-git ([1b356c6](https://github.com/un-rust/template/commit/1b356c6))
+- Bump version to 3.1.4 ([4959837](https://github.com/un-rust/template/commit/4959837))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v3.1.3
 
 [compare changes](https://github.com/un-rust/template/compare/v3.1.2...v3.1.3)
