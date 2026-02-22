@@ -1,3 +1,17 @@
+## v3.1.6
+
+[compare changes](https://github.com/un-rust/template/compare/v3.1.5...v3.1.6)
+
+### 🏡 Chore
+
+- Update changelog for version 3.1.5 ([d78c125](https://github.com/un-rust/template/commit/d78c125))
+- Update @biomejs/biome to version 2.4.4 and urlogger to ([a463800](https://github.com/un-rust/template/commit/a463800))
+- Bump version to 3.1.6 ([66b89a2](https://github.com/un-rust/template/commit/66b89a2))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v3.1.5
 
 [compare changes](https://github.com/un-rust/template/compare/v3.1.4...v3.1.5)
