@@ -1,3 +1,17 @@
+## v3.1.1
+
+[compare changes](https://github.com/un-rust/template/compare/v3.1.0...v3.1.1)
+
+### 🏡 Chore
+
+- Update changelog for version 3.1.0 ([95879c1](https://github.com/un-rust/template/commit/95879c1))
+- Update dependencies and scripts to use unrust ([2604530](https://github.com/un-rust/template/commit/2604530))
+- Bump version to 3.1.1 ([d56ba79](https://github.com/un-rust/template/commit/d56ba79))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v3.1.0
 
 [compare changes](https://github.com/un-rust/template/compare/v3.0.2...v3.1.0)
