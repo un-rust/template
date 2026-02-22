@@ -1,3 +1,17 @@
+## v3.1.5
+
+[compare changes](https://github.com/un-rust/template/compare/v3.1.4...v3.1.5)
+
+### 🏡 Chore
+
+- Update changelog for version 3.1.4 ([f725f47](https://github.com/un-rust/template/commit/f725f47))
+- Remove ESLint configuration file ([ce10381](https://github.com/un-rust/template/commit/ce10381))
+- Bump version to 3.1.5 ([916df51](https://github.com/un-rust/template/commit/916df51))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v3.1.4
 
 [compare changes](https://github.com/un-rust/template/compare/v3.1.3...v3.1.4)
