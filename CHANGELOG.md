@@ -1,3 +1,17 @@
+## v3.1.3
+
+[compare changes](https://github.com/un-rust/template/compare/v3.1.2...v3.1.3)
+
+### 🏡 Chore
+
+- Update changelog for version 3.1.2 ([bd249da](https://github.com/un-rust/template/commit/bd249da))
+- Add workflow_dispatch trigger to GitHub Actions test workflow ([ad2f152](https://github.com/un-rust/template/commit/ad2f152))
+- Bump version to 3.1.3 ([3ad202e](https://github.com/un-rust/template/commit/3ad202e))
+
+### ❤️ Contributors
+
+- Hyq <betterhyq@qq.com>
+
 ## v3.1.2
 
 [compare changes](https://github.com/un-rust/template/compare/v3.1.1...v3.1.2)
