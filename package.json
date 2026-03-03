@@ -30,7 +30,7 @@
 		"@types/node": "25.3.0",
 		"commitizen": "4.3.1",
 		"cz-conventional-changelog": "3.3.0",
-		"lefthook": "2.1.1",
+		"lefthook": "2.1.2",
 		"typescript": "5.9.3",
 		"unrust-toolbox": "0.0.2"
 	},
